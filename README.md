@@ -1,24 +1,73 @@
-# README
+## users テーブル
+|      Column      | Type    | Options     |
+| ---------------- | ------- | ----------- |
+| nickname         | string  | null: false |
+| email            | string  | null: false |
+| password         | string  | null: false |
+| family_name      | string  | null: false |
+| fist_name        | string  | null: false |
+| family_name_kana | string  | null: false |
+| fist_name_kana   | string  | null: false |
+| birthday         | integer | null: false |
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### Association
 
-Things you may want to cover:
+- has_many :items
+- has_one :purchas
 
-* Ruby version
 
-* System dependencies
+## items テーブル
+|      Column     | Type       | Options                        |
+| --------------- | -----------| ------------------------------ |
+| listing_image   | string     | null: false                    |
+| product_name    | text       | null: false                    |
+| decription      | text       | null: false                    |
+| category        | string     | null: false                    |
+| status          | string     | null: false                    |
+| cost            | string     | null: false                    |
+| area            | string     | null: false                    |
+| days            | string     | null: false                    |
+| price           | integer    | null: false                    |
+| user_id         | references | null: false, foreign_key: true |
 
-* Configuration
+### Association
 
-* Database creation
+- belongs_to :users
+- has_one :deliverys
 
-* Database initialization
+## buys テーブル
+|         Column           | Type        | Options                        |
+| -------------------------| ------------| ------------------------------ |
+| card_information         | integer     | null: false                    |
+| expiration_date          | integer     | null: false                    |
+| security_code            | integer     | null: false                    |
+| user_id                  | references  | null: false, foreign_key: true |
 
-* How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
+### Association
 
-* Deployment instructions
+hos_one :deliveys
+belongs_to :user
 
-* ...
+## deliverys テーブル
+|      Column     | Type       | Options                        |
+| --------------- | ---------- | ------------------------------ |
+| postal_code     | integer    | null: false                    |
+| prefectures     | string     | null: false                    |
+| municipalities  | string     | null: false                    |
+| address         | string     | null: false                    |
+| building        | string     | null: true                     |
+| tel             | integer    | null: false                    |
+| item_id         | references | null: false, foreign_key: true |
+| buy_id          | references | null: false, foreign_key: true |
+
+### Association
+
+belongs_to :item
+belongs_to :buy
+
+
+
+
+
+
