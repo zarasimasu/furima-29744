@@ -7,7 +7,7 @@
 | family_name         | string  | null: false |
 | first_name           | string  | null: false |
 | family_name_kana    | string  | null: false |
-| first_name_kana      | string  | null: false |
+| firrst_name_kana      | string  | null: false |
 | birthday            | date    | null: false |
 
 ### Association
@@ -21,11 +21,11 @@
 | --------------- | -----------| ------------------------------ |
 | name            | string     | null: false                    |
 | description     | text       | null: false                    |
-| category        | integer    | null: false                    |
-| status          | integer    | null: false                    |
-| cost            | integer    | null: false                    |
-| area            | integer    | null: false                    |
-| days            | integer    | null: false                    |
+| category_id     | integer    | null: false                    |
+| status_id       | integer    | null: false                    |
+| cost_id         | integer    | null: false                    |
+| area_id         | integer    | null: false                    |
+| days_id         | integer    | null: false                    |
 | price           | integer    | null: false                    |
 | user            | references | null: false, foreign_key: true |
 
