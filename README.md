@@ -4,9 +4,10 @@
 | nickname            | string  | null: false |
 | email               | string  | null: false |
 | encrypted_password  | string  | null: false |
-| fist_name           | string  | null: false |
+| family_name         | string  | null: false |
+| first_name           | string  | null: false |
 | family_name_kana    | string  | null: false |
-| fist_name_kana      | string  | null: false |
+| first_name_kana      | string  | null: false |
 | birthday            | date    | null: false |
 
 ### Association
@@ -18,9 +19,9 @@
 ## items テーブル
 |      Column     | Type       | Options                        |
 | --------------- | -----------| ------------------------------ |
-| product_name    | text       | null: false                    |
-| decription      | text       | null: false                    |
-| category        | string     | null: false                    |
+| name            | string     | null: false                    |
+| description     | text       | null: false                    |
+| category        | integer    | null: false                    |
 | status          | integer    | null: false                    |
 | cost            | integer    | null: false                    |
 | area            | integer    | null: false                    |
@@ -31,7 +32,7 @@
 ### Association
 
 - belongs_to :user
-- has_many :orders
+- has_one :order
 
 ## orders テーブル
 |         Column           | Type        | Options                        |
@@ -55,16 +56,13 @@
 | address                  | string     | null: false                    |
 | building                 | string     |                                |
 | tel                      | string     | null: false                    |
-| card_information         | integer    | null: false                    |
-| expiration_date          | integer    | null: false                    |
-| security_code            | integer    | null: false                    |
-| oder                     | references | null: false, foreign_key: true |
+| order                    | references | null: false, foreign_key: true |
 
 
 
 ### Association
 
-- belongs_to :oder
+- belongs_to :order
 
 
 
