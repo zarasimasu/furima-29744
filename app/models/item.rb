@@ -5,11 +5,6 @@ class Item < ApplicationRecord
   validates :image, presence: true
   validates :name, presence: true
   validates :description, presence: true
-  validates :category, presence: true
-  validates :status, presence: true
-  validates :cost, presence: true
-  validates :area, presence: true
-  validates :days, presence: true
   validates :price, presence: true
 
   validates_numericality_of :price, greater_than_or_equal_to: 300
