@@ -2,19 +2,17 @@ class Item < ApplicationRecord
 
   extend ActiveHash::Associations::ActiveRecordExtensions
 
-  validates :image, presence: true
-  validates :name, presence: true
-  validates :description, presence: true
-  validates :price, presence: true
+  with_options presence: true do
+    validates :image, :name, :description, :price
+  end
 
+  validates :price, format: {with: /\A[0-9]+\z/}
   validates_numericality_of :price, greater_than_or_equal_to: 300
   validates_numericality_of :price, less_than_or_equal_to: 9999999
 
-  validates :category_id, numericality: { other_than: 1 } 
-  validates :status_id, numericality: { other_than: 1 }
-  validates :cost_id, numericality: { other_than: 1 }
-  validates :area_id, numericality: { other_than: 1 }
-  validates :days_id, numericality: { other_than: 1 }
+  with_options numericality: { other_than: 1 } do
+    validates :category_id, :status_id, :cost_id, :area_id, :days_id
+  end
 
   belongs_to :user
   has_one_attached :image

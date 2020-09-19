@@ -3,20 +3,21 @@ function price(){
    const add_tax = document.getElementById("add-tax-price");
    const profit = document.getElementById("profit");
      priceInput.addEventListener('keyup', () => {
-         const value = priceInput.value;
+         const value = parseInt(priceInput.value);
+
+         let fee = 0;
+         let gains = 0;
          
       if (value >= 300 && value <= 9999999){
-        const formatter = new Intl.NumberFormat('ja-JP');
-        let fee = Math.floor(value * 0.1)
-        let gains = Math.floor(value - fee)
-        add_tax.textContent = formatter.format(fee);
-        profit.textContent = formatter.format(gains);
+        fee = parseInt(Math.floor(value * 0.1));
+        gains = parseInt(Math.floor(value - fee));
      } else {
-       let fee = '-';
-       let gains = '-';
-       add_tax.textContent = fee;
-       profit.textContent = gains;
+       fee = '';
+       gains = '';
      }
+     const formatter = new Intl.NumberFormat('ja-JP');
+     add_tax.textContent = formatter.format(fee);
+     profit.textContent = formatter.format(gains);
    });
 
   }
