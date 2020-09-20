@@ -19,6 +19,11 @@ class ItemsController < ApplicationController
     end
   end
 
+  def show
+    @item = Item.find(params[:id])
+    @day = Day.find(@item.days_id)
+  end
+
   private
 
   def item_params
