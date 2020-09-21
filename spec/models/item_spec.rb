@@ -44,7 +44,7 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include("Area must be other than 1")
       end
       it "発送までの日数が--だと保存できない" do
-        @item.days_id = 1
+        @item.day_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include("Days must be other than 1")
       end
