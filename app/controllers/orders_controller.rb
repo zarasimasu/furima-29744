@@ -11,6 +11,7 @@ class OrdersController < ApplicationController
   end
 
   def create
+    @address = Address.create(order_params[:postal_code, :prefecture_id, :municipality, :building, :tel])
     @order = Order.new(order_params[:token])
     if @order.valid?
       pay_item
@@ -24,7 +25,7 @@ class OrdersController < ApplicationController
   private
 
   def order_params
-    params.permit(:token, :postal_code, :prefecture_id, :municipality, :building, :tel)
+    params.require(:addrese).permit(:token, :postal_code, :prefecture_id, :municipality, :building, :tel)
   end
 
   def pay_item
