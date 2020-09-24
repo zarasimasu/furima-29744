@@ -47,12 +47,12 @@
 - belongs_to :user
 - has_one :delivery
 
-## deliverys テーブル
+## addresses テーブル
 |      Column              | Type       | Options                        |
 | ------------------------ | ---------- | ------------------------------ |
 | postal_code              | string     | null: false                    |
 | prefecture_id            | integer    | null: false                    |
-| municipalities           | string     | null: false                    |
+| municipality             | string     | null: false                    |
 | address                  | string     | null: false                    |
 | building                 | string     |                                |
 | tel                      | string     | null: false                    |
