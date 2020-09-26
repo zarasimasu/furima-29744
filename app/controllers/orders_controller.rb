@@ -3,7 +3,7 @@ class OrdersController < ApplicationController
   def index
     @address = AddressOrder.new
     @item = Item.find(params[:item_id])
-    if current_user == @item.user
+    if current_user == @item.user || @item.order.present?
       redirect_to root_path
     elsif user_signed_in?
     else
@@ -30,7 +30,7 @@ class OrdersController < ApplicationController
   end
 
   def pay_item
-    Payjp.api_key = "sk_test_2e1eef4ff4bcbee15ab8ac20"
+    Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
     Payjp::Charge.create(
       amount: @item.price,
       card: order_params[:token],
