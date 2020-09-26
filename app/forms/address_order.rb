@@ -8,9 +8,8 @@ class AddressOrder
     validates :municipality
     validates :address
     validates :tel, format: { with: /\A\d{11}\z/ }
+    validates :token
   end
-
-  validates :token, presence: true
 
   def save
     order = Order.create(user_id: user_id, item_id: item_id)
